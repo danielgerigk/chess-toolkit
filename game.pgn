@@ -1,0 +1,15 @@
+[Event "?"]
+[Site "?"]
+[Date "2016.09.25"]
+[Round "?"]
+[White "Gerigk, Daniel"]
+[Black "Jünger, Jörg"]
+[Result "1-0"]
+[ECO "C64"]
+[Source "Analyze This (kostenlos)"]
+
+1.? e5 2.? Nc6 3.Bb5 Bc5 4.c3 Nf6 5.Qa4 ? 6.O-O h6 7.d4 exd4 8.? Bb6 9.
+Nc3 a6 10.Be3 Na5 11.Bd3 ? 12.Qc2 c6 13.b4 Ng4 14.Bd2 Ba7 15.bxa5 Qxa5 16.Nb5 
+Qd8 17.Nxa7 Rxa7 18.h3 Nf6 19.Be3 d5 20.e5 Ne8 21.Bd2 f6 22.Bb4 Rf7 23.Bg6 Rd7 
+24.? Nc7 25.? Ne6 26.Bd6 b6 27.Qa8 Nc7 28.Qxc6 1-0
+
