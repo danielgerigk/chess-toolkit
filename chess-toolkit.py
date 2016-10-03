@@ -40,25 +40,26 @@ game = pgn.loads(pgn_text)[0]
 MAX_LOG_LEVEL = 2
 
 def complete(moves, board = chess.Board(), log_level = 0):
-        if moves in ([],['1/2-1/2'],['1-0'],['0-1']):
-            yield board.copy()
-        elif moves[0] == '?':
-            leg_moves = board.legal_moves            
-            for next_move in leg_moves:
-                if log_level <= MAX_LOG_LEVEL:
-                    print('.' * (3 * log_level) +
-                          str(list(leg_moves).index(next_move) + 1) +
-                          '/' + str(len(leg_moves)) +
-                          ': ' + board.san(next_move), file = sys.stderr)
-                board.push(next_move)
-                yield from complete(moves[1:], board = board, log_level = log_level + 1)
-                board.pop()
-        else:
-            next_move = moves[0]
-            if next_move in [board.san(m) for m in board.legal_moves]:
-                board.push_san(next_move)
-                yield from complete(moves[1:], board = board, log_level = log_level)
-                board.pop()
+    """Completes the a chessgame given by 'moves'; some entries in 'moves' are == '?'"""        
+    if moves in ([],['1/2-1/2'],['1-0'],['0-1']):
+        yield board.copy()
+    elif moves[0] == '?':
+        leg_moves = board.legal_moves            
+        for next_move in leg_moves:
+            if log_level <= MAX_LOG_LEVEL:
+                print('.' * (3 * log_level) +
+                      str(list(leg_moves).index(next_move) + 1) +
+                      '/' + str(len(leg_moves)) +
+                      ': ' + board.san(next_move), file = sys.stderr)
+            board.push(next_move)
+            yield from complete(moves[1:], board = board, log_level = log_level + 1)
+            board.pop()
+    else:
+        next_move = moves[0]
+        if next_move in [board.san(m) for m in board.legal_moves]:
+            board.push_san(next_move)
+            yield from complete(moves[1:], board = board, log_level = log_level)
+            board.pop()
 # -----------------------------------------------------------------------------
 # Create new game and merge all completions of game.moves ...
 G = chess.pgn.Game()
